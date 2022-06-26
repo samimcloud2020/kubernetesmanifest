@@ -3,36 +3,42 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: flaskdemo
-  name: flaskdemo
+    app: deploy1
+  name: deploy1
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
-      app: flaskdemo
+      app: deploy1
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: flaskdemo
+        app: deploy1
     spec:
       containers:
-      - image: samimbsnl/test:18
-        name: flaskdemo
+      - image: samimbsnl/test:latest
+        name: samimbsnl
         resources: {}
 status: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: lb-service
+  creationTimestamp: null
   labels:
-    app: lb-service
+    app: service1
+  name: service1
 spec:
-  type: LoadBalancer
   ports:
-  - port: 80
-    targetPort: 5000
+  - name: 80-8080
+    port: 80
+    protocol: TCP
+    targetPort: 8080
   selector:
-    app: flaskdemo
+    app: deploy1
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+  
