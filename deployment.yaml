@@ -18,7 +18,7 @@ spec:
         app: deploy1
     spec:
       containers:
-      - image: samimbsnl/test:latest
+      - image: samimbsnl/test:19
         name: samimbsnl
         resources: {}
 status: {}
