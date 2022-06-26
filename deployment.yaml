@@ -32,10 +32,10 @@ metadata:
   name: service1
 spec:
   ports:
-  - name: 80-8080
+  - name: 80-5000
     port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 5000
   selector:
     app: deploy1
   type: LoadBalancer
